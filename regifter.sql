@@ -59,7 +59,7 @@ VALUES
 INSERT INTO gifts (gift, giver, value, previously_regifted) 
 VALUES 
 ('soundboard', 'mom', 100, false),
-('gnome', 'sister', 10, true),
+('gnome candle', 'sister', 10, true),
 ('book', 'dad', 15, false),
 ('game', 'derek', 26, true),
 ('shirt', 'josh', 100, false);
@@ -67,13 +67,14 @@ VALUES
 --
 \echo Query for gifts with a value greater than or equal to 20
 --
+
 SELECT * FROM gifts WHERE value >= 20;
 
 --
 \echo Query for every gift that has the word candle in it, only show the gift column
 --
 
-SELECT * FROM gifts WHERE gift ILIKE '%candle%';
+SELECT gift FROM gifts WHERE gift ILIKE '%candle%';
 
 --
 \echo Query for every gift whose giver is Santa OR value is greater than 30
@@ -114,7 +115,7 @@ SELECT * FROM gifts;
 -- BONUSES
 
 --
- \echo Count the total number of gifts that have the word candle in it
+\echo Count the total number of gifts that have the word candle in it
 -- 
 
 SELECT COUNT(gift) FROM gifts WHERE gift ILIKE '%candle%';
@@ -126,10 +127,10 @@ SELECT COUNT(gift) FROM gifts WHERE gift ILIKE '%candle%';
 SELECT AVG(value) FROM gifts;
 
 -- 
- \echo Limit to 3 gifts, offset by 2 and order by price descending
+\echo Limit to 3 gifts, offset by 2 and order by price descending
 --
 
-SELECT * FROM gifts ORDER BY value ASC LIMIT 3 OFFSET 2;
+SELECT * FROM gifts ORDER BY value DESC LIMIT 3 OFFSET 2;
 
 --
 -- finish
